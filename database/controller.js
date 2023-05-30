@@ -6,8 +6,8 @@ const GetAdditionalAccountMovement = async(req, res) => {
     const pool = await conn.getConnection();
     const result = await pool.request()
         .input('inIdSubAccountState', req.body.inIdSubAccountState)
-        .input('inPhysicalCardCode', req.body.inPhysicalCardCode)
-        .input('inPostIdUser', req.body.inPostIdUser)
+        .input('inPhysicalCardCode', req.body.inCardCode)
+        .input('inUsername', req.body.inUsername)
         .input('inPostIp', req.body.inPostIp)
         .output('outResultCode', 0)
         .execute('GetAdditionalAccountMovement')
@@ -20,7 +20,7 @@ const GetMasterAccountMovements = async(req, res) => {
     const pool = await conn.getConnection();
     const result = await pool.request()
         .input('inIdAccountState', req.body.inIdAccountState)
-        .input('inPostIdUser', req.body.inPostIdUser)
+        .input('inUsername', req.body.inUsername)
         .input('inPostIp', req.body.inPostIp)
         .output('outResultCode', 0)
         .execute('GetMasterAccountMovements')
@@ -32,8 +32,8 @@ Function to call SP GetSubAccountStatements
 const GetSubAccountStatements = async(req, res) => {
     const pool = await conn.getConnection();
     const result = await pool.request()
-        .input('inPhysicalCardCode', req.body.inPhysicalCardCode)
-        .input('inPostIdUser', req.body.inPostIdUser)
+        .input('inPhysicalCardCode', req.body.inCardCode)
+        .input('inUsername', req.body.inUsername)
         .input('inPostIp', req.body.inPostIp)
         .output('outResultCode', 0)
         .execute('GetSubAccountStatements')
@@ -45,8 +45,8 @@ Function to call SP ShowMasterAccountStatement
 const ShowMasterAccountStatement = async(req, res) => {
     const pool = await conn.getConnection();
     const result = await pool.request()
-        .input('inTFCode', req.body.inTFCode)
-        .input('inPostIdUser', req.body.inPostIdUser)
+        .input('inTFCode', req.body.inCardCode)
+        .input('inUsername', req.body.inUsername)
         .input('inPostIp', req.body.inPostIp)
         .output('outResultCode', 0)
         .execute('ShowMasterAccountStatement')
@@ -58,7 +58,7 @@ Function to call SP ShowPhysicalCard
 const ShowPhysicalCard = async(req, res) => {
     const pool = await conn.getConnection();
     const result = await pool.request()
-        .input('inUserName', req.body.inUserName)
+        .input('inUsername', req.body.inName)
         .input('inPostIp', req.body.inPostIp)
         .output('outResultCode', 0)
         .execute('ShowPhysicalCard')
@@ -87,6 +87,7 @@ const login = async(req, res) => {
                 access: "Login Fallido",
                 message: "Usuario o contraseña incorrectos"
             })
+ 
         }
 };
 
