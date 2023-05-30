@@ -59,7 +59,6 @@ const ShowPhysicalCard = async(req, res) => {
     const pool = await conn.getConnection();
     const result = await pool.request()
         .input('inUserName', req.body.inUserName)
-        .input('inPostIdUser', req.body.inPostIdUser)
         .input('inPostIp', req.body.inPostIp)
         .output('outResultCode', 0)
         .execute('ShowPhysicalCard')
