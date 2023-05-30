@@ -73,7 +73,7 @@ const login = async(req, res) => {
     const result = await pool.request()
         .input('inUser', req.body.inUser)
         .input('inPassword', req.body.inPassword)
-        .input('inPostIdUser', req.body.inPostIdUser)
+        .input('inPostUser', req.body.inPostUser)
         .input('inPostIp', req.body.inPostIp)
         .output('outLoginSuccess', 0)             
         .output('outResultCode', 0)
