@@ -17,7 +17,6 @@ const GetAdditionalAccountMovement = async(req, res) => {
 Function to call SP GetMasterAccountMovements
 */
 const GetMasterAccountMovements = async(req, res) => {
-    console.log(req.body);
     const pool = await conn.getConnection();
     const result = await pool.request()
         .input('inIdAccountState', req.body.inIdAccountState)
@@ -57,7 +56,6 @@ const ShowMasterAccountStatement = async(req, res) => {
 Function to call SP ShowPhysicalCard
 */
 const ShowPhysicalCard = async(req, res) => {
-    console.log(req.body)
     const pool = await conn.getConnection();
     const result = await pool.request()
         .input('inUsername', req.body.inName)
@@ -70,7 +68,6 @@ const ShowPhysicalCard = async(req, res) => {
 Function to call SP Login
 */
 const login = async(req, res) => {
-    console.log(req.body)
     const pool = await conn.getConnection();
     const result = await pool.request()
         .input('inUser', req.body.inUser)
@@ -92,7 +89,6 @@ const login = async(req, res) => {
             })
  
         }
-        console.log(result.output.outLoginSuccess)
 };
 
 exports.GetAdditionalAccountMovement = GetAdditionalAccountMovement;
