@@ -6,8 +6,8 @@ const GetAdditionalAccountMovement = async(req, res) => {
     const pool = await conn.getConnection();
     const result = await pool.request()
         .input('inIdSubAccountState', req.body.inIdSubAccountState)
-        .input('inIdAccountState', req.body.inIdAccountState)
-        .input('inPostUser', req.body.inPostUser)
+        .input('inPhysicalCardCode', req.body.inPhysicalCardCode)
+        .input('inPostIdUser', req.body.inPostIdUser)
         .input('inPostIp', req.body.inPostIp)
         .output('outResultCode', 0)
         .execute('GetAdditionalAccountMovement')
@@ -20,7 +20,7 @@ const GetMasterAccountMovements = async(req, res) => {
     const pool = await conn.getConnection();
     const result = await pool.request()
         .input('inIdAccountState', req.body.inIdAccountState)
-        .input('inPostUser', req.body.inPostUser)
+        .input('inPostIdUser', req.body.inPostIdUser)
         .input('inPostIp', req.body.inPostIp)
         .output('outResultCode', 0)
         .execute('GetMasterAccountMovements')
@@ -33,7 +33,7 @@ const GetSubAccountStatements = async(req, res) => {
     const pool = await conn.getConnection();
     const result = await pool.request()
         .input('inPhysicalCardCode', req.body.inPhysicalCardCode)
-        .input('inPostUser', req.body.inPostUser)
+        .input('inPostIdUser', req.body.inPostIdUser)
         .input('inPostIp', req.body.inPostIp)
         .output('outResultCode', 0)
         .execute('GetSubAccountStatements')
@@ -46,7 +46,7 @@ const ShowMasterAccountStatement = async(req, res) => {
     const pool = await conn.getConnection();
     const result = await pool.request()
         .input('inTFCode', req.body.inTFCode)
-        .input('inPostUser', req.body.inPostUser)
+        .input('inPostIdUser', req.body.inPostIdUser)
         .input('inPostIp', req.body.inPostIp)
         .output('outResultCode', 0)
         .execute('ShowMasterAccountStatement')
@@ -59,7 +59,7 @@ const ShowPhysicalCard = async(req, res) => {
     const pool = await conn.getConnection();
     const result = await pool.request()
         .input('inUserName', req.body.inUserName)
-        .input('inPostUser', req.body.inPostUser)
+        .input('inPostIdUser', req.body.inPostIdUser)
         .input('inPostIp', req.body.inPostIp)
         .output('outResultCode', 0)
         .execute('ShowPhysicalCard')
@@ -73,7 +73,7 @@ const login = async(req, res) => {
     const result = await pool.request()
         .input('inUser', req.body.inUser)
         .input('inPassword', req.body.inPassword)
-        .input('inPostUser', req.body.inPostUser)
+        .input('inPostIdUser', req.body.inPostIdUser)
         .input('inPostIp', req.body.inPostIp)
         .output('outLoginSuccess', 0)             
         .output('outResultCode', 0)
